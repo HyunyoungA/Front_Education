@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	#test1{width: 70px}
+</style>
+</head>
+<body>
+	<h1>Practice2</h1>
+	<input type="text" id="test1">
+	<select>
+		<option value="+">+</option>
+		<option value="-">-</option>
+		<option value="*">*</option>
+		<option value="/">/</option>
+		<option value="%">%</option>
+	</select>
+	<input type="text" id="test2">
+	<button onclick="test9()">=</button>
+	<input type="text" id="test3">
+</body>
+</html>

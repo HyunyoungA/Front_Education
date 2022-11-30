@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.area{width: 700px; height: 300px; border: 1px solid black;}
+	#userName{width: 200px}
+	#password{width: 200px}
+	#price{width: 200px}
+	#amount{width: 70px}
+</style>
+</head>
+<body>
+	<h1>Practice4</h1>
+	<form>
+		<fieldset>
+			<legend>구매정보</legend>
+			<ul>
+				<li>
+				구매자 : 
+				<input type="text" name="purchaseInfo" id="userName" placeholder="구매자의 이름을 입력하세요">
+				</li>
+				<li>
+				상품명 : 
+				<input type="text" name="purchaseInfo" id="password" placeholder="구매 상품 명을 입력하세요">
+				</li>
+				<li>
+				가격 : 
+				<input type="text" name="purchaseInfo" id="price" placeholder="구매 가격을 입력하세요">
+				</li>
+				<li>
+				구매 수량 : 
+				<input type="number" name="purchaseInfo" id="amount" min="10" max="100" step="10" placeholder="최소10" onchange="limit(this);">
+				</li>
+				<li>
+				납품 등급 : 
+				<input type="range" min="1" max="9" step="2" name="purchaseInfo" id="range">
+				</li>
+				<li>
+				기타 사항 : 
+				<textarea rows="6" cols="40" name="purchaseInfo"></textarea>
+				</li>
+			</ul>
+		</fieldset>
+	</form>
+	<br>
+	<button onclick="access()">입력 값 출력하기</button><br><br>
+	<div id="area1" class="area"></div>
+	<script>
+		function limit(lim){
+	        if (Number(lim.value) > 100){
+	          lim.value = 100
+	        }
+	     }
+		
+		function access(){
+			var info = document.getElementsByName('purchaseInfo');
+			console.log(info);
+			
+			var text = '';	
+			var i = 0;
+			switch(i){
+				case 0: text += "구매자 명 : " + info[i].value + "님<br>"; i++;
+				case 1: text += "상품 명 : " + info[i].value + "<br>"; i++;
+				case 2: text += "가격 : " + info[i].value + "만원<br>"; i++;
+				case 3: text += "구매 수량 : " + info[i].value + "개<br>"; i++;
+				case 4: text += "납품등급 : " + info[i].value + "등급<br>";i++;
+				case 5: text += "기타사항 : " + info[i].value + "<br>"; break;
+			}
+			document.getElementById('area1').innerHTML = text;
+		}
+	</script>
+	
+</body>
+</html>

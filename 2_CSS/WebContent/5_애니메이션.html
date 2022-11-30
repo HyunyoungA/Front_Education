@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>애니메이션</title>
+<style>
+	.trans2-test{width: 250px; height: 200px;}/*사이즈 줄이기*/
+	/*움직이게 하는*/
+	#trans2-1:hover{
+		/*transform: translateX(50px);*//*모든 브라우저에 적용한다!!(브라우저마다 따로 작성하지않아도된다.)마우스 올라갔을때 오른쪽으로 50px움직임-50px하면 왼쪽*/
+		-ms-transform: translate(50px);/*예전에는 오픈할 브라우저에 맞춰서 작성했어야했다.마이크로소프트 i버전에서만 보임*/
+		-webkit-transform: translateX(50px);/*크롬버전으로 동일하게 작성*/
+	}
+	#trans2-2:hover{transform: translateY(50px);}
+	#trans2-3:hover{transform: translate(50px, 50px);}/*대각선으로 움직일 수 있다*/
+	#trans2-4:hover{transform: scaleX(2);}/*가로로 2배만큼 확대*/
+	#trans2-5:hover{transform: scaleY(2);}/*세로로 2배만큼 확대*/
+	#trans2-6:hover{transform: scaleX(2,2);}/*인자2개필요*/
+	#trans2-7:hover{transform: rotate(45deg);}/*지정한 값만큼 45도만큼 회전*/
+	#trans2-8:hover{transform: skewX(45deg);}/*45만큼 가로로 비틀기*/
+	#trans2-9:hover{transform: skewY(45deg);}
+	#trans2-10:hover{transform: skew(10deg, 10deg);}/*전체 비틀기*/
+	
+	.trans3-test{width: 250px; height: 200px;}
+	#trans3-1:hover{transform: perspective(300px) translate3d(100px, 100px, 100px);}/*perspective(300px)로 사용할 공간을 지정3d로보여질 가로,세로,대각선*/
+	#trans3-2:hover{transform: perspective(300px) translateZ(100px);}/*스케일처럼 확대되어보임*/
+	#trans3-3:hover{transform: perspective(300px) rotateX(30deg);}/*원근감 공간을 보여주는거라고 이해*/
+	#trans3-4:hover{transform: perspective(300px) rotateY(30deg);}
+	#trans3-5:hover{transform: /*perspective(300px)*/ rotateZ(30deg);}/*펄스펙티브없어도 동일하게 보여지는 조건임.의미상은 다를 수 있음*/
+	#trans3-5:hover{transform: perspective(300px) rotate3d(2.5, 1.5, -1.5, 30deg);}/*이렇게도 사용한다.*/
+	
+	.to-wrap, .flower{border: 1px solid black; width: 300px; height: 200px;}
+	.to-wrap{display: inline-block;}/*옆으로 나오게한다*/
+	.flower:hover{transform: rotate(25deg);}/*25도씩 돌아감*/
+	#left-top{transform-origin: left top;}/*트랜스폰오리진: 변형기준점*/
+	#right-top{transform-origin: right top;}
+	#right-bottom{transform-origin: right bottom;}
+	#left-bottom{transform-origin: left bottom;}
+	
+	.bv-test{width: 300px; height: 200px; border: 1px solid black;}
+	.bv-test:hover{transform: rotateY(180deg);}/*180도로 돌렸기때문에 뒷면으로 보임(뒤집어보임).*/
+	#back1:hover{backface-visibility: hidden;}/*뒷면은 숨김-->안보임, 원래 뒷면보는게 기본임*/
+	
+	.transition{width: 100px; height: 100px; border: 1px solid black; background: red;}
+	#t1:hover{background: yellow;}/*마우스 올리기면해도 컬러변경*/
+	#t1{transition-duration: 2s;}/*2초에 걸쳐서 바뀜 시간설정, 위에꺼랑 같이쓸때 마우스를 떼면 바로 빨강색으로 바뀐다.하지만 따로쓰면 마우스뗄때도 2초에 걸쳐서 변화한다.*/
+	#t2:hover{transform: rotate(180deg); background: yellow; width: 200px; height:200px;}
+	#t2{
+		transition-property: transform, background-color, widht, height;
+		transition-duration: 2s, 3s, 1s, 5s;/*각각 시간을 지정하면 그 시간에 걸쳐서 변경된다.*/
+	}
+	#t3:hover{background: yellow; transform: rotate(180deg);}
+	#t3{
+		transition-duration: 2s;
+		transition-timing-function: ease;/*ease: 넣거나 넣지않아도 똑같다 속도의 기본값 디폴트값이다. 넣지않으면 디폴트값 ease로 설정이 자동으로 되기 때문이다.*/
+		transition-timing-function: linear;/*처음부터 끝까지 속도가 동일, 일정한 속도를 가진다.*/
+		transition-timing-function: ease-in;/*천천히시작해서 뒤에 속도가 조금 빨라짐*/
+		transition-timing-function: ease-out;/*뒤로 갈수록 천천히끝남*/
+		transition-timing-function: ease-in-out;/*천천히시작했다가 조금빨라졌다가 다시 천천히끝난다.*/
+		transition-timing-function: step-start;/*변화가 시작지점에서 일어난다 */
+		transition-timing-function: step-end;/*변화가 마지막지점에서 일어난다 마지막에 휙 바뀜*/
+	}
+	#t4:hover{transform: rotate(180deg); background: yellow;}
+	#t4{transition-duration: 3s; transition-delay: 2s;}/* 3초에 거쳐서 실행되고, 2초 뒤에 돌아간다*/
+	
+	
+	
+	
+</style>
+</head>
+<body>
+    <h1>변형</h1>
+
+    <!-- 1. 2차원 변형 -->
+    <h2>2차원 변형</h2>
+    <h3>좌우로 움직이기</h3>
+    <img src="sample/image/flower1.PNG" class="trans2-test" id="trans2-1">
+    <h3>위아래로 움직이기</h3>
+    <img src="sample/image/flower2.PNG" class="trans2-test" id="trans2-2">
+    <h3>대각선으로 움직이기</h3>
+    <img src="sample/image/flower3.PNG" class="trans2-test" id="trans2-3">
+    <h3>가로로 확대/축소</h3>
+    <img src="sample/image/flower4.PNG" class="trans2-test" id="trans2-4">
+    <h3>세로로 확대/축소</h3>
+    <img src="sample/image/flower5.PNG" class="trans2-test" id="trans2-5">
+    <h3>전체 확대/축소</h3>
+    <img src="sample/image/river1.PNG" class="trans2-test" id="trans2-6">
+    <h3>지정한 각도만큼 회전</h3>
+    <img src="sample/image/river2.PNG" class="trans2-test" id="trans2-7">
+    <h3>지정한 각도만큼 가로로 뒤틀기</h3>
+    <img src="sample/image/city1.PNG" class="trans2-test" id="trans2-8">
+    <h3>지정한 각도만큼 세로로 뒤틀기</h3>
+    <img src="sample/image/tower1.PNG" class="trans2-test" id="trans2-9">
+    <h3>지정한 각도만큼 전체 뒤틀기</h3>
+    <img src="sample/image/forest1.PNG" class="trans2-test" id="trans2-10">
+
+    <hr>
+
+    <!-- 2. 3차원 변형 -->
+    <h2>3차원 변형</h2>
+    <h3>지정한 크기만큼 x, y, z이동</h3>
+    <img src="sample/image/flower1.PNG" class="trans3-test" id="trans3-1">
+    <h3>지정한 크기만큼 Z축으로 이동</h3>
+    <img src="sample/image/flower2.PNG" class="trans3-test" id="trans3-2">
+    <h3>지정한 크기만큼 x축 방향으로 회전</h3>
+    <img src="sample/image/flower3.PNG" class="trans3-test" id="trans3-3">
+    <h3>지정한 크기만큼 y축 방향으로 회전</h3>
+    <img src="sample/image/flower4.PNG" class="trans3-test" id="trans3-4">
+    <h3>지정한 크기만큼 z축 방향으로 회전</h3>
+    <img src="sample/image/flower5.PNG" class="trans3-test" id="trans3-5">
+    <h3>지정한 크기만큼 x, y, z축 방향으로 회전</h3>
+    <img src="sample/image/river1.PNG" class="trans3-test" id="trans3-6">
+
+    <hr>
+
+    <!-- 3. 기타 변형 속성 -->
+    <h2>기타 변형 속성</h2>
+    <h3>transform-origin</h3>
+    <p>변형의 _________을 설정할 수 있음</p>
+    <div>
+        <div class="to-wrap">
+            <img src="sample/image/flower1.PNG" class="flower" id="left-top">
+        </div>
+        <div class="to-wrap">
+            <img src="sample/image/flower1.PNG" class="flower" id="right-top">
+        </div>
+        <div class="to-wrap">
+            <img src="sample/image/flower1.PNG" class="flower" id="left-bottom">
+        </div>
+        <div class="to-wrap">
+            <img src="sample/image/flower1.PNG" class="flower" id="right-bottom">
+        </div>
+    </div>
+
+    <hr>
+
+    <h3>backface-visibility</h3>
+    <p>회전하여 뒷면이 보일 경우 뒷면을 보이게 할지 말지 정함</p>
+    <img src="sample/image/flower2.PNG" class="bv-test" id="back1">
+    <img src="sample/image/flower2.PNG" class="bv-test" id="back2">
+
+    <hr>
+    <hr>
+
+    <!-- 4. 트랜지션 -->
+    <h1>트랜지션</h1>
+    <p>시간에 따라서 웹 요소의 스타일 속성이 조금씩 바뀌는 것</p>
+    <h3>트랜지션 진행 시간 지정하기</h3>
+    <div class="transition" id="t1"></div>
+    <h3>트랜지션 진행 별 시간 지정하기</h3>
+    <div class="transition" id="t2"></div>
+    <h3>트랜지션 진행 별 속도 지정하기</h3>
+    <pre>   - 선택자{transition-timing-function: linear | ease | ease-in | ease-out | ease-in-out | cublic-bezier(n,n,n,n)}</pre>
+    <div class="transition" id="t3"></div>
+    <h3>트랜지션 진행 시간 지연하기</h3>
+    <div class="transition" id="t4"></div><!-- 4로 -->
+   
+</body>
+</html>

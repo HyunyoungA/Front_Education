@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	#test1{width: 70px}
+	#test2{width: 70px}
+	#test3{width: 70px}
+</style>
+</head>
+<body>
+	<h1>Practice2</h1>
+	<form name='calc'>
+	<input type="text" id="test1"><!-- 첫번째 빈칸 -->
+	
+	<select name="selectBox" id="selectBox"><!-- 연산자 + - * / % -->
+		<option value="+" selected>+</option>
+		<option value="-" selected>-</option>
+		<option value="*">*</option>
+		<option value="/">/</option>
+		<option value="%">%</option>
+	</select>
+	
+	<input type="text" id="test2"><!-- 두번째 빈칸 -->
+	<button onclick="test1();v();">=</button><!-- 값의 결과를 전달하는 버튼 -->
+	<input type="text" id="test3" class="test"> <!-- 값의 결과를 반환받는 빈칸 -->
+	</form>
+	<script>
+		
+	
+		var cal = "";
+		function Calculation(test4){
+			cal = test4;
+		}
+			
+		function test1(){
+			var test = document.getElementById('test1').value;
+			var test2 = document.getElementById('test2').value;
+			var test3 = document.getElementById('test3').value;
+			//var sam = document.getElementById("selectBox");
+			//var value = sam.value;
+			
+			switch(cal){
+			//case "+": parseInt(test) + parseInt(test2) = result;
+			//		  document.calc.test3 = result; break;
+			case "-": parseInt(test) - parseInt(test2) = result;
+					  document.calc.test3 = result; break;
+			case "*": parseInt(test) * parseInt(test2) = result;
+					  document.calc.test3 = result; break;
+			case "/": parseInt(test) / parseInt(test2) = result;
+					  document.calc.test3 = result; break;
+			case "%": parseInt(test) % parseInt(test2) = result;
+					  document.calc.test3 = result; break;
+			
+			}
+			//document.getElementById('test3').innerHTML = value;//추출한 이름 div에 출력
+			//test.value ='';
+			
+			
+			
+			//var test3 = test.value;
+			
+			
+			
+			//if(test3 == "+"){
+			//	document.getElementById('test3').innerHTML = value;//추출한 이름 div에 출력
+			//	test.value ='';
+			//}
+			
+		}
+		function v(){
+				
+		var str = '';
+		str += 'var num1 = Number(prompt("숫자 입력"));';//다 문자열로 쓴거
+		str += 'var num2 = Number(prompt("숫자 입력"));';//다 문자열로 쓴거
+		str += 'var sum = num1 + num2;';//다 문자열로 쓴거
+		str += 'alert(sum);';//다 문자열로 쓴거
+			
+		console.log(str);
+		eval(str);
+		}
+	</script>
+	<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Insert title here</title>
+
+
+
+<script type="text/javascript">
+
+function send(){
+
+	var f=document.forms[0];	// form 문장의 객체선언.숫자는 form 문장의 순서에 따른다. document.forms.num1.value; 이런식으로 경로를 바로 지정할 수 없다.
+
+	var a=f.num1.value;	        // 변수선언은 자료형의 구분없이 var로 지정한다.
+
+	var b=f.num2.value;             
+
+	
+
+	if(isNaN(a) || isNaN(b)){    // isNaN(is Not A Number : 값이 숫자가 아니면
+
+		alert("숫자만 입력 하삼.");
+
+		f.num1.focus();          // focus() : 해당 지점으로 커서를 옮긴다.
+
+		return;
+
+	}
+
+	a=parseInt(a);                    // parseInt : 문자를 정수를
+
+	b=parseInt(b);
+
+	
+
+	if(f.oper.value=='add')        // oper는 select문의 value값이다. f객체의 oper의 value값이 add라면
+
+		alert("결과 : "+(a+b));
+
+	else if(f.oper.value=='sub')
+
+		alert("결과 : "+(a-b));
+
+	else if(f.oper.value=='mul')
+
+		alert("결과 : "+(a*b));
+
+	else if(f.oper.value=='div')
+
+		alert("결과 : "+(a/b));
+
+}
+
+
+
+function result(){
+
+	var a,b;
+
+	a=prompt("수식을 입력하세요","1+1");   // prompt("message" ,"[inputDefault]") : 실행되면 수식을 입력하세요 라는 창이 하나뜬다. 
+
+	b=eval(a);	                                      // 문자열을 수치로 변환(수식이 들어온다면 자동으로 연산되어 답이 출력됨)
+
+	alert(a+"="+b)
+
+}
+
+
+
+</script>
+
+</head>
+
+
+
+</body>
+</html>

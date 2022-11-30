@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.area{width: 600px; height: 100px; border: 1px solid red;}
+	
+	
+</style>
+</head>
+<body>
+	<h1>Practice1</h1>
+	<form>
+		<fieldset>
+			<legend>취미</legend>
+			<table>
+				<tr>
+					<td><input type="checkbox" name="hobby" value="전체선택" id="sum"  onclick="selectAll(this)"><label>전체선택</label></td>
+					<td><input type="checkbox" name="hobby" value="종합" id="all"><label>종합</label></td>
+					<td><input type="checkbox" name="hobby" value="소설" id="novel"><label>소설</label></td>
+					<td><input type="checkbox" name="hobby" value="시/에세이" id="essay"><label>시/에세이</label></td>
+					<td><input type="checkbox" name="hobby" value="경제/경영" id="economy"><label>경제/경영</label></td>
+					<td><input type="checkbox" name="hobby" value="자기계발" id="self-improvement"><label>자기계발</label></td>
+					<td><input type="checkbox" name="hobby" value="아동" id="child"><label>아동</label></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="hobby" value="여행" id="travel"><label>여행</label></td>
+					<td><input type="checkbox" name="hobby" value="과학" id="science"><label>과학</label></td>
+					<td><input type="checkbox" name="hobby" value="역사/문화" id="culture"><label>역사/문화</label></td>
+					<td><input type="checkbox" name="hobby" value="외국어" id="foreign-language"><label>외국어</label></td>
+					<td><input type="checkbox" name="hobby" value="컴퓨터" id="computer"><label>컴퓨터</label></td>
+					<td><input type="checkbox" name="hobby" value="만화" id="cartoon"><label>만화</label></td>
+				</tr>
+			</table>
+		</fieldset>
+	</form>
+	<br>
+	<button onclick="accessName();checkSelectAll();">카테고리 선택</button>
+	<div id="area2" class="area"></div><br>
+	<script>
+	function checkSelectAll()  {// 전체 체크박스
+		  const checkboxes = document.querySelectorAll('input[name="hobby"]');
+		  // 선택된 체크박스
+		  const checked = document.querySelectorAll('input[name="hobby"]:checked');
+		  // select all 체크박스
+		  const selectAll = document.querySelector('input[name="selectall"]');
+		  
+		  if(checkboxes.length === checked.length)  {
+		    selectAll.checked = true;
+		  }else {
+		    selectAll.checked = false;
+		  }
+		}	
+	function selectAll(selectAll)  {
+		  const checkboxes 
+		     = document.getElementsByName('hobby');
+		  
+	checkboxes.forEach((checkbox) => {
+	    checkbox.checked = selectAll.checked
+	  })
+	}
+	//전체선택 체크박스에 onclick 이벤트로 자기자신을 불러올 수 있는 this를 매개변수로 넣어서,
+	//메소드에서 selectAll(selectAll)로 함수 호출하고
+		function accessName(){
+			var hobby = document.getElementsByName('hobby');
+			console.log(hobby);
+			
+			var checkItem = '';
+			for(var i = 0; i < hobby.length; i++){
+				if(hobby[i].checked){
+					checkItem += hobby[i].value + " ";
+				}
+			}
+			document.getElementById('area2').innerHTML = checkItem;
+		}
+	</script>
+	
+</body>
+</html>

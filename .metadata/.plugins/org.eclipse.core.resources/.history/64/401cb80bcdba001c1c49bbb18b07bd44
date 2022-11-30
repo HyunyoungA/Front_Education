@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.area{width: 600px; height: 100px; border: 1px solid red;}
+</style>
+</head>
+<body>
+	<h1>Practice1</h1>
+	<form>
+		<fieldset>
+			<legend>취미</legend>
+			<table>
+				<tr>
+					<td><input type="checkbox" name="hobby" value="sum" id="sum"><label>전체선택</label></td>
+					<td><input type="checkbox" name="hobby" value="all" id="all"><label>종합</label></td>
+					<td><input type="checkbox" name="hobby" value="novel" id="novel"><label>소설</label></td>
+					<td><input type="checkbox" name="hobby" value="essay" id="essay"><label>시/에세이</label></td>
+					<td><input type="checkbox" name="hobby" value="economy" id="economy"><label>경제/경영</label></td>
+					<td><input type="checkbox" name="hobby" value="self-improvement" id="self-improvement"><label>자기계발</label></td>
+					<td><input type="checkbox" name="hobby" value="child" id="child"><label>아동</label></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="hobby" value="travel" id="travel"><label>여행</label></td>
+					<td><input type="checkbox" name="hobby" value="science" id="science"><label>과학</label></td>
+					<td><input type="checkbox" name="hobby" value="culture" id="culture"><label>역사/문화</label></td>
+					<td><input type="checkbox" name="hobby" value="foreign-language" id="foreign-language"><label>외국어</label></td>
+					<td><input type="checkbox" name="hobby" value="computer" id="computer"><label>컴퓨터</label></td>
+					<td><input type="checkbox" name="hobby" value="cartoon" id="cartoon"><label>만화</label></td>
+				</tr>
+			</table>
+		</fieldset>
+	</form>
+	<br>
+	<button onclick="accessName();">카테고리 선택</button>
+	<div id="area2" class="area"></div><br>
+	<script>
+		function accessName(){
+			var hobby = document.getElementsBtName('hobby');
+			console.log(hobby);
+			
+			var checkItem = '';
+			
+			
+			
+		}
+	</script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</body>
+</html>

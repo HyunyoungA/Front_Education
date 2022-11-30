@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	#blank1{width: 70px}
+	#blank2{width: 70px}
+	#result{width: 70px; height: 20px; magin-left: 20px;}
+</style>
+</head>
+<body>
+	<h1>Practice2</h1>
+	<form id='form'>
+	<input type="text" id="blank1"><!-- 첫번째 빈칸 -->
+	<select id="selectBox"><!-- 연산자 + - * / % -->
+		<option value="+" selected>+</option>
+		<option value="-" selected>-</option>
+		<option value="*">*</option>
+		<option value="/">/</option>
+		<option value="%">%</option>
+	</select>
+	<input type="text" id="blank2"><!-- 두번째 빈칸 -->
+	 <input type="button" id="operation" value="="><!-- 값의 결과를 전달하는 버튼 -->
+	<input type="text" id="result" class="area">
+	<!-- 값의 결과를 반환받는 빈칸 -->
+	</form>
+	<script>
+		
+		document.getElementById("operation").addEventListener("click", Calculation);
+		
+		
+		function Calculation(){
+			
+			var num1 = Number(document.getElementById('blank1').value);
+			var num2 = Number(document.getElementById('blank2').value);
+			
+			var cal = document.getElementById('selectBox').value;
+			
+			
+// 			if(result=='Infinity'||result =='NaN'){
+// 				return document.getElementById('result').innerHTML = '연산불가';				
+// 			}var area = document.getElementById('result');/*var변수타입*/
+// 						area.style.backgroundColor = 'red';
+// 						area.style.Color = 'white';
+			
+			switch(cal){
+			case "+": result = num1 + num2; 
+					  document.getElementById('result').value = result;
+					  area.style.color = 'white';
+					  break;
+			case "-": result = num1 - num2;
+					  document.getElementById('result').value = result;
+					  area.style.color = 'white';
+					  break;
+			case "*": result = num1 * num2;
+					  document.getElementById('result').value = result;
+					  area.style.color = 'white';
+					  break;
+			case "/": result = num1 / num2;
+					  document.getElementById('result').value = result;
+					  
+					  if(result=='Infinity'|| result=='-Infinity' ||result =='NaN'){//이렇게 사용가능--> isNaN(calc)
+							var area = document.getElementById('result');/*var변수타입*/
+							area.style.backgroundColor = 'red';
+							area.style.color = 'white';
+							area.value = '연산불가';
+						}else{
+							document.getElementById('result').value = result;
+					  		var area = document.getElementById('result');
+					  		area.style.backgroundColor = 'white';
+					  		area.style.color = 'black';
+						}
+					   break;
+			case "%": result = num1 % num2;
+			  		  document.getElementById('result').value = result;
+				
+					  if(num2 !== 0){
+						result = Number(num1 % num2);
+				  		document.getElementById('result').value = result;
+				  		var area = document.getElementById('result');
+				  		area.style.backgroundColor = 'white';
+				  		area.style.color = 'black';
+					  }else{
+						  var area = document.getElementById('result');/*var변수타입*/
+							area.style.backgroundColor = 'red';
+							area.style.color = 'white';
+							area.value = '연산불가';
+					  }
+					  
+			document.getElementById('result').value = text;//추출한 이름 div에 출력
+			}
+			//리셋할 때 빈칸3개랑 연산자를 넣었을때  
+		
+		}
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	#test1{width: 70px}
+	#test2{width: 70px}
+	#test3{width: 70px}
+</style>
+</head>
+<body>
+	<h1>Practice2</h1>
+	<input type="text" id="test1">
+	<select>
+		<option value="+">+</option>
+		<option value="-">-</option>
+		<option value="*">*</option>
+		<option value="/">/</option>
+		<option value="%">%</option>
+	</select>
+	<input type="text" id="test2">
+	<button onclick="test1() + option(value)+ test2();">=</button>
+	<input type="text" id="test3">
+	<script>
+		function test1(){
+			var test = document.getElementById('test1').value;
+			console.log(test);
+		}
+	
+		function test2(){
+			var test2 = document.getElementById('test2').value;
+			console.log(test2);
+		}
+	</script>
+	
+</body>
+</html>

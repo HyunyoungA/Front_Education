@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	#test1{width: 70px}
+	#test2{width: 70px}
+	#test3{width: 70px}
+</style>
+</head>
+<body>
+	<h1>Practice2</h1>
+	<input type="text" id="test1">
+	<select name="selectBox" id="selectBox">
+		<option value="+" selected>+</option>
+		<option value="-" selected>-</option>
+		<option value="*">*</option>
+		<option value="/">/</option>
+		<option value="%">%</option>
+	</select>
+	<input type="text" id="test2">
+	<button onclick="test1();">=</button>
+	<input type="text" id="test3">
+	<script>
+		function test1(){
+			var test = document.getElementById('test1').value;
+			console.log(test);
+		
+			var test2 = document.getElementById('test2').value;
+			console.log(test2);
+			
+			var sam = document.getElementById("selectBox");
+			console.log(sam);
+			
+			
+		}
+		function v(){
+				
+		var str = '';
+		str += 'var num1 = Number(prompt("숫자 입력"));';//다 문자열로 쓴거
+		str += 'var num2 = Number(prompt("숫자 입력"));';//다 문자열로 쓴거
+		str += 'var sum = num1 + num2;';//다 문자열로 쓴거
+		str += 'alert(sum);';//다 문자열로 쓴거
+			
+		console.log(str);
+		eval(str);
+		}
+	</script>
+	
+</body>
+</html>

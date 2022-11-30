@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.area{border: 1px solid black; width: 300px; height: 100px; font-size: 40px; color: red;}
+</style>
+</head>
+<body>
+	<h1>window객체</h1>
+	<p>
+		window객체는 자바스크립트의 최상위 객체, BOM/DOM으로 나뉨<br>
+		BOM(Browser Object Model) : location, navigator, history, screen객체<br><!-- 브라우저 -->
+		DOM(Document Object Model) : document객체
+	</p>
+	
+	<h2>window객체</h2>
+	<p>브라우저 창에 대한 설정을 하는 객체</p>
+	<button onclick="test1();">실행1</button>
+	<button onclick="test2();">실행2</button>
+	<script>
+		function test1(){
+// 			window.open();//새창이 열린다.(비어있는)
+// 			window.open('01_JavaScript.html');
+// 			window.open('http://www.naver.com');//네이버창이 새로 열린다.
+			window.open('http://www.naver.com', '네이버', 'width=500, height=300');//사이즈지정한 형태에 맞게 새창이 열린다.'네이버': 이 창에 대한 이름
+			
+		}
+		function test2(){
+			var popup = window.open('', '', 'width=300, height= 200');//빈창이 뜬다.(사이즈만 지정)
+			popup.document.write('<html><body><h2>짜잔! 새로운 팝업 탄생이요!</h2></body></html>');//새로운 팝업창에 내용 넣기!!
+			
+		}
+		
+	</script>
+	<h3>window객체의 timer메소드</h3>
+	<h4>setTimeout()</h4>
+	<button onclick="test3()">실행확인</button>
+	<script>
+		function test3(){
+			var myWindow = window.open('', '', 'width=500, height=300');
+			
+			myWindow.alert('3초 후에 이 페이지는 종료됩니다.');
+			//타이머 맞추기!
+			window.setTimeout(function(){
+				myWindow.close();
+			}, 3000);//3초=3000
+		}
+	</script>
+	
+	<h4>setInterval()</h4>
+	<button onclick="test4();">실행확인</button>
+	<div id="area4" class="area"></div>
+	<script>
+		function test4(){
+			//네모칸에 시간설정
+			var area4 = document.getElementById('area4');
+			
+			//1초마다 변경되는것-->시계가 된다 초마다 나오게 되서.
+			window.setInterval(function(){
+				var date = new Date();
+				area4.innerHTML = date.getHours() + " : " + date.getMinutes()+ " : "
+									+date.getSeconds();
+			}, 1000);//1000은 1초마다 변경되게 
+			
+		}
+	</script>
+	
+	<h4>clearInterval()</h4>
+	<button onclick="test5();">실행확인</button>
+	<div id="area5" class='area'></div>
+	<script>
+		function test5(){
+			//3초 카운트 세기 : 321 종료!
+			var area5 = document.getElementById('area5');
+			
+			var count = 3;
+			var interval3 = window.setInterval(function(){
+				area5.innerHTML = 'countdown : ' + (count--);
+				
+				if(count < 0){
+					clearInterval(interval3);//진짜로 끝내겠다.
+					area5.innerHTML += '종료!';//+=을 사용하여 진짜 종료가 된건지 종료가 되지않으면 -1,-2...계속 카운팅된다. 그냥 텍스트종료에서 멈춘것처럼 보이려면 +=이 아닌 =을 사용한다.
+				}
+				
+			}, 1000);
+		
+		}
+	</script>
+	
+</body>
+</html>

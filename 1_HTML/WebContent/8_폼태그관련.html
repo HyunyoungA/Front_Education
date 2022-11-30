@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>폼 태그 관련</h1>
+	<p>
+		form태그 : 화면에서 사용자가 입력한 값에 대해 처리 방식 지정
+		action속성 : 입력된 데이터들을 전송 받을 곳(페이지, 서버, 클래스 등...) 지정 <br>
+		method속성 : get / post방식
+	</p>
+	<form action="1_글자관련.html" method="get"><!-- get사용해서 url상단에 검색어가 보여짐, post를 사용하면 url상단에 보여지지 않음(숨김) -->
+		<label>검색할 내용 : </label>
+		<input type="text" size="20" name="search" placeholder="검색어를 입력해주세요">
+		<input type="submit" value="검색">
+	</form>
+
+	<hr>
+	
+	<form>
+		<fieldset>
+			<legend>필드셋에 대한 제목 작성</legend>
+			<label>입력 1 : </label><input type="text"><br>
+			<label>입력 2 : </label><input type="text"><br>
+			<label>입력 3 : </label><input type="text"><br>
+		</fieldset>
+		<br>
+		<fieldset>
+			<legend>필드셋으로 묶은 영역별로 구분</legend>
+			<label>입력 1 : </label><input type="text"><br>
+			<label>입력 2 : </label><input type="text"><br>
+			<label>입력 3 : </label><input type="text"><br>
+		</fieldset>
+	</form>
+	
+	<hr>
+	
+	<h2>input태그 : 사용자에게 값을 받아오는 역할</h2>
+	<h3>text와 관련된 input태그 속성값</h3>
+	<form>
+		<h4>type="hidden" : 화면에는 보이지 않는 상태로 데이터 전송</h4>
+		<input type="hidden" name="important">
+		
+		<h4>type="text"</h4>
+		<input type="text" size="15" placeholder="아이디를 입력하세요" maxlength="8"
+			name="userId" autofocus value="아이디를 입력하세요" readonly>
+		<!-- name속성 : 사용자가 입력한 데이터를 저장할 수 있는 변수명 기술하는 속성 -->
+		<!-- value속성 : 입력한 데이터가 저장되는 속성 -->
+		<!-- form태그를 통해 데이터를 전송하면 'name속성 값=value속성 값'의 형태로 데이터 전송 -->
+		
+		<h4>type="password"</h4>
+		<input type="password" name="userPwd" size="25" placeholder="비밀번호를 입력하세요">
+		
+		<h4>type="button", type="submit", type="reset"</h4>
+		<input type="button" value="버튼">
+		<input type="submit" value="전송">
+		<input type="reset" value="취소">
+		
+		<br>
+		
+		<button type="button">button</button><!-- button은 form태그 안에 있으면 자동 submit역할 -->
+		<button type="submit">submit</button>
+		<button type="reset">reset</button>
+	</form>
+	
+	<hr>
+	
+	<h2>라디오버튼과 체크박스</h2>
+	<form>
+		<label>성별 : </label>
+		<input type="radio" name="gender" value="M"><label>남자</label>
+		<input type="radio" name="gender" value="F" checked><label>여자</label>
+		
+		<br>
+		
+		<input type="checkbox" name="hobby" value="base" checked><label>야구</label>
+		<input type="checkbox" name="hobby" value="foot" checked><label>축구</label>
+		<input type="checkbox" name="hobby" value="basket"><label>농구</label>
+
+		<br><br>
+		
+		<input  type="submit" value="전송">
+	</form>
+
+	<hr>
+	
+	<h2>file과 image</h2>
+	<form>
+		<label>파일 선택 : </label><input type="file" name="file" multiple accept=".mp4, .png">
+		
+		<br>
+		
+		<input type='image' name="img" src="sample/sample/image/flower1.PNG">
+		<br><br>
+		
+		<input type="submit"> 
+	</form>
+
+	<hr>
+	
+	<form>
+		<label>검색 : </label><input type="search" name="searchText"><!-- 옆에 x로 글씨지우기가능 -->
+		<br>
+		<label>홈페이지 : </label><input type="url" name="homepage" value="http://"><!-- http://앞에 꼭 붙어야된다. -->
+		<br>
+		<label>이메일 : </label><input type="email" name="email"><!-- @가 들어가야한다 -->
+		<br>
+		<label>전화번호 : </label><input type="tel" name="phone"><!-- 모바일에서 확인할 수 있다. 처음 시작할때 숫자패드로 뜬다.-->
+		<br><br>
+		<input type="submit" value="전송">
+	</form>
+
+	<h2>숫자와 관련된 input태그</h2>
+	<form>
+		<input type="number" min="0" max="100" step="10" value="0" name="num"><!-- 최소0최대100 10씩커진다 -->
+		<br>
+		<input type="range" min="0" max="100" step="10" name="range">
+		<br><br>
+		<input type="submit">
+	</form>
+	
+	<hr>
+	
+	<h2>시간/날짜와 관련된 input태그</h2>
+	<form>
+		<input type="date"><br>
+		<input type="month"><br>
+		<input type="week"><br>
+		<input type="time"><br>
+		<input type="datetime-Local">
+	</form>
+	
+	<h2>select태그와 option태그</h2>
+	<form>
+	<label>국적 : </label>
+		<select name="nation1" multiple size="1"><!-- 멀티플 컨트롤로 여러개 선택가능, size는 몇개를 보여줄지   -->
+			<option>한국</option>
+			<option value="ch">중국</option>
+			<option value="jp">일본</option>
+			<option value="etc" selected>기타</option><!-- 밸류값 안넣어도 기타로 이름이 들어감, 대신 밸류를 선택하면 벨류값이 넣어간다. -->
+		</select>
+	</form>
+	
+	<hr>
+	
+	<h2>datalist</h2><!-- 텍스트 쓸때 텍스트 미리보기. 밸류가 위로 나오고 값이 밑으로 나온다 밸류랑 값이 같으면 나오지않는다. -->
+	<form>
+		<label>과목 : </label><input type="text" name="subject" list="sublist">
+		<datalist id="sublist">
+			<option value="java">자바</option>
+			<option value="oracle">오라클</option>
+			<option value="JDBC">JDBC</option>
+			<option value="html">HTML</option>
+		</datalist>
+	</form>
+	
+	<hr>
+	
+	<h2>textarea</h2><!-- 여러줄을 입력해주는 텍스트 상자 -->
+	<form>
+		<textarea cols="30" roes="10" placeholder="내용입력">이게 마지막이다 야호</textarea><!-- 벨류에 속성넣는 것이 아니라 태그 사이에 텍스트 넣으면 처음부터 값이 들어가있게 하는 것. 사이즈 조절가능!--사이즈 고정하려면 style="resize:none;" 추가  cols: 가로길이 -->
+	</form>
+	
+	
+	<br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+
+</body>
+</html>

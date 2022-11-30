@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>함수</h1>
+	<h2>함수 선언</h2>
+	<h3>선언적 함수</h3>
+	<button onclick="test1();">실행확인</button>
+	<script>
+		function test1(){//선언적 함수: 함수에 이름을 집어넣음
+			console.log('test1함수 실행');
+		}
+	</script>
+	
+	<h3>익명함수</h3>
+	<button onclick="test2();">실행확인</button>
+	<script>
+		//익명함수 : 함수에 이름이 없이 만드는것, 변수에 이름을 집어넣음, 익명함수에 대한 실행은 변수명으로 불러오면 된다.
+		var test2 = function(){
+			console.log('test2함수 실행')
+		}
+	</script>
+	
+	<h2>함수 전달인자와 매개변수</h2>
+	<h3>매개인자로 전달하기</h3>
+	<button id="btn1">실행확인</button>
+	<script>
+		document.getElementById('btn1').onclick = function(){//함수명 적지않아도 연결할 수 있다.id호 실행
+			test3('안녕', '반가워');//지정된 매개변수보다 많은 개수를 호출하는 것을 허용, 초과된 인자는 무시.
+			test3();//undefined 뜬다. 지정된 매개변수보다 적은 개수를 호출하는 것을 허용 , 전달이 되지 않은 매개변수는 undefined, 들어간 값이 없어서 벨류가 확인할 수 있는 값이 없어서 이렇게 뜸
+			
+		}
+		function test3(value){
+			console.log('test3호출');
+			console.log(value);
+			
+			console.log(arguments);//**숨겨져있는 배열, 내가 넘겨받은 모든값들을 저장해 놓는 배열.
+		}
+	
+	</script>
+	
+	<h3>매개인자로 스스로를 전달하기</h3>
+	<button onclick='test4("JavaScript");'>JavaScript</button>
+	<button onclick='test4("jQuery");'>jQuery</button>
+	<script>
+		function test4(subject){
+			alert('오늘 배운 내용은' + subject +'입니다.');
+			
+		}
+	</script>
+	<!-- 방법2 -->
+	<button onclick='test4(this);'>JavaScript</button>
+	<button onclick='test4(this);'>jQuery</button>
+	<script>
+		function test4(subject){//**this지금현재 있는 곳(코드) = 나, 어떤코드에 들어가있는것에 따라 다르게 나옴
+			console.log(subject);//this 자바스크립트에 내장된 변수
+			alert('오늘 배운 내용은' + subject.innerHTML +'입니다.');
+		}
+	</script>
+	
+	<h3>함수의 리턴처리</h3>
+	<button onclick="test6();">실행확인</button>
+	<script>
+		function test6(){
+			var ran = returnFunc();//반환타입없어도 반환가능
+			alert(ran);
+		}
+		function returnFunc(){
+			return Math.random() * 100 + 1;
+		}
+	</script>
+	
+	<h3>매개변수로 함수 전달</h3>
+	<button onclick='test7(calledFunction);'>실행확인</button>
+	<script>
+		function test7(v){//v에 calledFunction이 들어감, 매개변수에 함수전달
+			v();
+		}
+		function calledFunction(){
+			alert('calledFunction 실행');
+		}
+	</script>
+	
+	<h3>함수리턴</h3>
+	<button onclick="test8()();">실행확인</button>
+	<script>
+		function test8(){//소괄호 추가...
+			return function(){
+				alert('함수 반환 성공');//펑션함수가 이름없는 함수여서 이렇게 소괄호로 추가해서불러옴. 호출해서 반환까지 받아온것이기 때문에 ()를 한번더 넣어서 받아옴으로써 실행된다.
+			}
+		}
+	</script>
+	
+	<h2>내장함수</h2>
+	<h4>eval()</h4>
+	계산식 : <input type="text" id="test1"><button onclick="test9()">실행확인</button>
+	<script>
+		function test9(){
+			var test = document.getElementById('test1').value;
+			console.log(test);//테스트 문자열
+			console.log(eval(test));//문자열을 숫자로 변경해주는 함수, 문자열을 자바스크립트 코드로 변환해서 실행을 시켜준다, 자바스크립트코드로 변경하다보니 계산식으로 변경
+			
+			var str = '';
+			str += 'var num1 = Number(prompt("숫자 입력"));';//다 문자열로 쓴거
+			str += 'var num2 = Number(prompt("숫자 입력"));';//다 문자열로 쓴거
+			str += 'var sum = num1 + num2;';//다 문자열로 쓴거
+			str += 'alert(num1 + " + " + num2 + " = " + sum);';//다 문자열로 쓴거
+			
+			console.log(str);
+			eval(str);
+		}
+	</script>
+	
+	<h4>infinity와 NaN</h4>
+	<button onclick="test10();">실행확인</button>
+	<script>
+		function test10(){
+			var num1 = 10 / 0;
+			var num2 = 10 / '김나리';
+			
+			console.log(num1); //Infinity
+			console.log(num2); //너가 뽑은건 숫자가 아니야 NaN(Not a Number)
+			
+			console.log(typeof num1);//둘다 숫자타입
+			console.log(typeof num2);
+			
+			console.log(num1 == Infinity);
+			console.log(isFinite(num1));//정해진 수가 있나 확인
+			console.log(isNaN(num2));
+			console.log(num2 == NaN);
+			
+			var num3 = -10 / 0;
+			console.log(num3);//-Infinity
+			console.log(num3 == -Infinity);//true
+		}
+	</script>
+	
+	
+</body>
+</html>

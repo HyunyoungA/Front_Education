@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.area{width: 600px; height: 100px; border: 1px solid red;}
+</style>
+</head>
+<body>
+	<h1>Practice1</h1>
+	<form>
+		<fieldset>
+			<legend>취미</legend>
+			<table>
+				<tr>
+					<td><input type="checkbox" name="hobby" value="전체선택" id="sum"><label>전체선택</label></td>
+					<td><input type="checkbox" name="hobby" value="종합" id="all"><label>종합</label></td>
+					<td><input type="checkbox" name="hobby" value="소설" id="novel"><label>소설</label></td>
+					<td><input type="checkbox" name="hobby" value="시/에세이" id="essay"><label>시/에세이</label></td>
+					<td><input type="checkbox" name="hobby" value="경제/경영" id="economy"><label>경제/경영</label></td>
+					<td><input type="checkbox" name="hobby" value="자기계발" id="self-improvement"><label>자기계발</label></td>
+					<td><input type="checkbox" name="hobby" value="아동" id="child"><label>아동</label></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="hobby" value="여행" id="travel"><label>여행</label></td>
+					<td><input type="checkbox" name="hobby" value="과학" id="science"><label>과학</label></td>
+					<td><input type="checkbox" name="hobby" value="역사/문화" id="culture"><label>역사/문화</label></td>
+					<td><input type="checkbox" name="hobby" value="외국어" id="foreign-language"><label>외국어</label></td>
+					<td><input type="checkbox" name="hobby" value="컴퓨터" id="computer"><label>컴퓨터</label></td>
+					<td><input type="checkbox" name="hobby" value="만화" id="cartoon"><label>만화</label></td>
+				</tr>
+			</table>
+		</fieldset>
+	</form>
+	<br>
+	<button onclick="accessName();">카테고리 선택</button>
+	<div id="area2" class="area"></div><br>
+	<script>
+	
+		function selectAll(selectAll){
+			const checkboxs = document.getElementsByName('hobby');
+			checkboxs.forEach((checkbox) =>{checkbox.checked = selectAll.checked;})
+		}	
+	
+		function accessName(){
+			var hobby = document.getElementsByName('hobby');
+			console.log(hobby);
+			
+			var checkItem = '';
+			for(var i = 0; i < hobby.length; i++){
+				if(hobby[i].checked){
+					checkItem += hobby[i].value + " ";
+				}
+			}
+			document.getElementById('area2').innerHTML = checkItem;
+		}
+	</script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Insert title here</title>
+
+
+
+<script>
+
+function send(){
+
+	var f=document.forms[0];	// form 문장의 객체선언.숫자는 form 문장의 순서에 따른다. document.forms.num1.value; 이런식으로 경로를 바로 지정할 수 없다.
+
+	var a=f.num1.value;	        // 변수선언은 자료형의 구분없이 var로 지정한다.
+
+	var b=f.num2.value;             
+
+	
+
+	if(isNaN(a) || isNaN(b)){    // isNaN(is Not A Number : 값이 숫자가 아니면
+
+		alert("숫자만 입력 하삼.");
+
+		f.num1.focus();          // focus() : 해당 지점으로 커서를 옮긴다.
+
+		return;
+
+	}
+
+	a=parseInt(a);                    // parseInt : 문자를 정수를
+
+	b=parseInt(b);
+
+	
+
+	if(f.oper.value=='add')        // oper는 select문의 value값이다. f객체의 oper의 value값이 add라면
+
+		alert("결과 : "+(a+b));
+
+	else if(f.oper.value=='sub')
+
+		alert("결과 : "+(a-b));
+
+	else if(f.oper.value=='mul')
+
+		alert("결과 : "+(a*b));
+
+	else if(f.oper.value=='div')
+
+		alert("결과 : "+(a/b));
+
+}
+
+
+
+function result(){
+
+	var a,b;
+
+	a=prompt("수식을 입력하세요","1+1");   // prompt("message" ,"[inputDefault]") : 실행되면 수식을 입력하세요 라는 창이 하나뜬다. 
+
+	b=eval(a);	                                      // 문자열을 수치로 변환(수식이 들어온다면 자동으로 연산되어 답이 출력됨)
+
+	alert(a+"="+b)
+
+}
+
+
+
+</script>
+
+</head>
+
+<body>
+
+
+
+<input type="button" onclick="result();" value="수식">
+
+<br/>
+
+<form action="">
+
+<input type="text" name="num1">
+
+<select name="oper">
+
+	<option value="add"> 더하기</option>
+
+	<option value="sub"> 빼기</option>
+
+	<option value="mul"> 곱하기</option>
+
+	<option value="div"> 나누기</option>
+
+</select>
+
+<input type="text" name="num2">
+
+<input type="button" onclick="send();" value="=">
+
+</form>
+
+
+
+</body>
+
+</html>
+
+
+

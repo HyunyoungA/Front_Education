@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>배열</h1>
+	<p>자바스크립트에서는 자료형 지정이 없기 때문에 한 배열 안에 모든 자료형 보관 가능</p>
+	<button onclick="arrayTest1();">확인하기</button>
+	<script>
+		function arrayTest1(){
+			var arr = ['강건강', 20, false, [1, 2, 3, 4]]//자료형이 바로들어가기때문에 모든 자료를 보관 할수 있다.
+			console.log(arr);
+		}
+	</script>
+	
+	<h2>배열 선언 및 초기화</h2>
+	<p>배열 선언 시 크기를 지정하지 않고 선언할 수도 있고 크기를 정하고 선언할 수도 있음</p>
+	<button onclick="arrayTest2();">확인하기</button>
+	<script>
+		function arrayTest2(){
+			var arr1 = new Array(); //new로 만들 수도 있다.
+			var arr2 = new Array(3); //크기 지정
+			console.log('arr.length : ' + arr1.length);
+			console.log('arr.length : ' + arr2.length);
+			
+			arr1[0] = '사과';
+			arr1[1]	= '귤';
+			arr1[2] = '바나나';
+			arr1[3] = '딸기';
+			
+			console.log('arr1.length : ' + arr1.length);//길이가 0이어도 데이터가 계속 들어갈 수 있다.
+			console.log(arr1);
+			
+			arr2[0] = '지하철';
+			arr2[1]	= '기차';
+			arr2[2] = '비행기';
+			arr2[3] = '배';
+	
+			console.log('arr2.length : ' + arr2.length);//크기가 3인 배열이지만 4개의 값을 넣어도 다 받아와준다.
+			console.log(arr2);
+			
+			var arr3 = new Array('빨강', '초록', '파랑');
+			console.log('arr3.length : ' + arr3.length);//만들면서 동시에 초기화1
+			console.log(arr3);
+			
+			var arr4 = ['java', 'oracle', 'jdbc', 'html', 'css', 'javasrtipt']
+			console.log('arr4.length : ' + arr4.length);//만들면서 동시에 초기화2
+			console.log(arr4);
+		
+		}
+	</script>
+	
+	<h2>배열 메소드</h2>
+	<h3>indexOf</h3>
+	<button onclick="methodTest1();">확인하기</button>
+	<script>
+		function methodTest1(){
+			var arr = ['사과', '포도', '배', '바나나', '감', '키위', '복숭아'];
+			console.log(arr.indexOf('바나나'));//해당 요소가 위치한 인덱스 반환
+			console.log(arr.indexOf('토마토'));//존재하지 않기때문에 -1이 뜬다.
+		}
+		
+	</script>
+	
+	<h3>concat</h3>
+	<button onclick="methodTest2();">확인하기</button>
+	<script>
+		function methodTest2(){
+			var arr1 = ['빨강', '노랑', '초록'];
+			var arr2 = ['파랑', '보라'];
+			
+			console.log(arr1.concat(arr2));//'빨강', '노랑', '초록', '파랑', '보라' 순서
+			console.log(arr2.concat(arr1));//파랑', '보라', '빨강', '노랑', '초록' 순서
+			console.log(arr2.concat(arr1).concat(arr1).concat(arr2));
+			//배열을 콘캣으로 반환할 수 있고 그것을 이어서 + 이어서 사용
+			//'파랑', '보라', '빨강', '노랑', '초록', '빨강', '노랑', '초록', '파랑', '보라' 이어서쓰기
+		}
+	</script>
+	
+	<h3>join</h3>
+	<button onclick="methodTest3();">확인하기</button>
+	<script>
+		function methodTest3(){
+			var arr = ['강남', '역삼', '선릉', '교대'];
+			console.log(arr.join());
+			console.log(typeof arr.join());//문자열 반환 확인
+		}
+	</script>
+	
+	<h3>reverse</h3>
+	<button onclick="methodTest4();">확인하기</button>
+	<script>
+		function methodTest4(){
+			var arr = [1, 2, 3, 4, 5, 6, 7];//순서 뒤집어 준다. 7, 6, 5, 4, 3, 2, 1
+			
+			console.log(arr.reverse());
+		}
+		
+	</script>
+	
+	<h3>sort</h3>
+	<button onclick="methodTest5();">확인하기</button>
+	<script>
+		function methodTest5(){
+			var arr = [10, 543, 34, 450, 123, 885]//앞자리 숫자만 보고 정렬을 해준다 (6) [10, 123, 34, 450, 543, 885]
+			console.log(arr.sort());//sort : 숫자가 들어가있어도 문자로 받아드려서 문자열에 대해서 정렬을 하는것.
+			
+			var sortArr = arr.sort(function(left, right){
+					return left-right;//뺄셈으로 순서 정렬
+				}//같으면 0이 나와서 뺄셈으로 누가 더 큰지 보는거이기 때문에 
+			);
+			console.log(sortArr);
+		}
+	
+	</script>
+	
+	<h3>push와pop</h3>
+	<button onclick="methodTest6();">확인하기</button>
+	<script>
+		function methodTest6(){
+			var arr = ['김고은', '한예슬', '신민아', '전지현', '손예진', '김소연'];
+			
+			console.log(arr.push('유인나'));//푸쉬 후 배열사이즈
+			arr.push('유인나');//push : 마지막에 요소를 추가
+			console.log(arr);//(7) ['김고은', '한예슬', '신민아', '전지현', '손예진', '김소연', '유인나']
+			
+			arr.push('송혜교');
+			console.log(arr);
+			
+			arr.sort();//오름차순 정렬
+			
+			console.log(arr);//오름차순 정렬
+			console.log(arr.pop());//제거한 요소 확인할 수 있다.
+			arr.pop();//pop: 마지막요소 제거
+			console.log(arr);
+			arr.pop();
+			console.log(arr);
+		}
+	</script>
+	<h3>shift와 unshift</h3>
+	<button onclick="methodTest7();">확인하기</button>
+	<script>
+		function methodTest7(){
+			var arr = ['야구', '축구', '농구', '배구', '탁구'];
+			
+			console.log(arr);
+			
+			//shift : 첫번째 값이 삭제
+			console.log(arr.shift());
+			console.log(arr);
+			
+			console.log(arr.unshift('당구'));//베열 5인지 확인
+			console.log(arr);//unshift : 맨앞에 값 추가
+			
+			//push, pop(맨 마지막 요소에 추가,삭제)과 shift, unshift(맨앞에 요소에 추가, 삭제) 대비된다.
+			
+		}
+	</script>
+	
+	<h3>slice와 splice</h3>
+	<button onclick="methodTest8();">확인하기</button>
+	<script>
+		function methodTest8(){
+			var arr = ['자바', '오라클', 'JDBC', 'HTML', 'CSS', 'JavaScript'];
+			
+			console.log(arr.slice(2, 4));//스타트인덱스와 엔드 인덱스인데 2-4의 값에서 끝에 마지막 인덱스 미포함, 부분적인 배열만 추출
+			console.log(arr);//전체 배열 확인해봤을 때는 그대로 유지
+			
+			console.log(arr.splice(2, 2, 'Spring'));
+			//					  2부터 2개를 빼고 그 자리에 Spring을 추가!
+			
+		}
+	</script>
+	
+	<h3>toString</h3>
+	<button onclick="methodTest9();">확인하기</button>
+	<script>
+		function methodTest9(){
+			var arr = ['잠은', '보약이다', '잠은', '죽어서 자는게', '아니다', '그건', '죽은거다'];
+			console.log(arr.toString());//문자열로 다 붙어서 나옴 join이랑 같게 출력이 된다.
+			console.log(arr.join('/'));//잠은/보약이다/잠은/죽어서 자는게/아니다/그건/죽은거다
+			//조인은 내가 원하는 구분자로 나타낼 수 있다. toString은 구분자 변경 불가능하다.
+		}
+	</script>
+
+</body>
+</html>

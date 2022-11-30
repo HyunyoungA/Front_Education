@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="../js/jquery-3.6.0.min.js"></script>
+<style>
+	.wrap, .wrap *{
+		border: 1px solid lightgray;
+		display: block; padding: 5px; margin: 15px;
+	}
+</style>
+</head>
+<body>
+	<h1>객체 탐색</h1>
+	<hr><hr>
+	
+	<h2>탐색 메소드</h2>
+	<h3>sideways메소드</h3>
+	<div class="wrap">div(parent)
+		<p>p</p>
+		<span>span</span>
+		<h4>h4</h4>
+		<h5>h5</h5>
+		<p>p</p>
+	</div>
+	<script>
+		$(function(){
+			$('h4').siblings().css({'border':'2px solid red','color':'red'});
+			//.siblings(): 나랑 동일한 레벨에 있는 요소들 리턴
+			$('h4').siblings('p').css({'border':'2px solid orange','color':'orange'});
+			//p태그만 지정가능
+			$('h4').next().css({'border':'2px solid blue','color':'blue'});
+			//next(): 뒤에있는 요소에 설정
+			$('h4').nextAll().css('font-size','50px');
+			//nextAll(): 뒤에 있는 모든 요소에 설정
+			$('h4').nextUntil('p').css('border','dashed');
+			//:p까지인테 p는 제외
+			$('h4').prev().css({'background':'red','color':'white'});
+			$('h4').prevAll().css({'background':'beige','color':'red'});
+			//동위선상
+			$('h4').prevUntil('p').css('border','double');
+			//더블 span에만 두줄로나온다.
+		});
+	</script>
+	
+	<h2>객체 탐색 테스트</h2>
+	<table border="1">
+		<tr>
+			<th>이름</th>
+			<th>나이</th>
+			<th>취미</th>
+		</tr>
+		<tr>
+			<td>강건강</td>
+			<td>25</td>
+			<td>운동</td>
+		</tr>
+		<tr>
+			<td>남나눔</td>
+			<td>17</td>
+			<td>요리</td>
+		</tr>
+		<tr>
+			<td>도대담</td>
+			<td>30</td>
+			<td>등산</td>
+		</tr>
+	</table>
+	<label>선택한 게시물 : </label>
+	<label id="selectName" onclick=function()></label> /
+	<label id="selectAge"></label> /
+	<label id="selectHobby"></label>
+	
+	<script>
+		$(function(){
+			$('tr').click(function(){
+				var tdNodes = $(this).children('td');//자기자신('tr')안에 td-->펑션클릭메소드에 tr지정해서
+				console.log(tdNodes[0]);//강건강
+				console.log(tdNodes[0].innerText);
+				
+				$('#selectName').text(tdNodes[0].innerText);
+				$('#selectAge').text(tdNodes[1].innerText);
+				$('#selectHobby').text(tdNodes[2].innerText);
+				
+				console.log(tdNodes.eq(0).text());//0번째 인덱스한테 텍스트가져오게함
+				$('#selectName').text(tdNodes.eq(0).text());
+				$('#selectAge').text(tdNodes.eq(1).text());
+				$('#selectHobby').text(tdNodes.eq(2).text());
+				
+// 				$('td').click(function();
+// 				var text = document.getElementById('selectName');
+// 				text = $('.wrap').find('td');
+			});
+			
+		});
+	</script>
+	
+	
+</body>
+</html>

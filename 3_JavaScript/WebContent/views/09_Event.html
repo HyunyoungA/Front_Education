@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>이벤트</h1>
+	<h2>이벤트 설정 방법</h2>
+	<h3>고전 이벤트 모델</h3>
+	<button id="test1">test1실행확인</button>
+	<button id="test2">test2실행확인</button>
+	<button id="test2_1">test2_1실행확인</button>
+	<script>
+		var test1 = document.getElementById('test1');
+		var test2 = document.getElementById('test2');
+		
+		test1.onclick = function(){
+			console.log('test1이 실행되었습니다.');//속성자체에 온클릭을 넣어서 사용s
+		}
+		
+		test2.onclick=function(){
+			console.log('test2가 실행되면서 test1이벤트를 삭제하였습니다.');
+			test1.onclick = null;
+		}
+		
+		var test2_1 = document.getElementById('test2_1');
+		function test21(){
+			alert('이름으로 이벤트 연결');
+		}
+		test2_1.onclick = test21;
+		test2_1.onmouseover = function(){
+			console.log("여러 이벤트 동시 연결 가능");
+		}
+		
+	</script>
+	
+	<h4>이벤트 발생 객체</h4>
+	<button id="test3">test3 실행확인</button>
+	<script>
+		//숙제
+		//ver1. 버튼을 눌었을 때 버튼의 배경과 글자색이 각각 검은색과 하얀색으로 변경되게 하기
+		//ver2. 누를때마다 버튼의 배경과 글자색이 바뀌게 하기(기본->검/하->기본->검하....)
+	</script>
+	
+	<h4>인라인 모델</h4>
+	<button onclick="test4();">test4 실행확인</button>
+	<button onclick="alert('test4가 실행되었습니다.')">test4 실행확인</button>
+	<script>
+		function test4(){
+			alert('test4가 실행되었습니다');
+		}
+	</script>
+	
+	<h3>표준 이벤트 모델</h3>
+	<button id="test5">test5 실행확인</button>
+	<button id="test6">test6 실행확인</button>
+	<script>
+		var test5 = document.getElementById('test5');
+		var test6 = document.getElementById('test6');
+		
+		function fn_test5_1(){
+			console.log('test5가 클릭됐습니다.');
+		}
+		function fn_test5_2(){
+			console.log('test5에 들어왔습니다.');
+		}
+		
+		test5.addEventListener('click', fn_test5_1);
+		test5.addEventListener('mouseover', fn_test5_2);
+		
+		test6.addEventListener('mouseover',function(){
+			console.log('test6에 들어오면서 test5의 클릭이벤트를 제거했습니다.');
+			test5.removeEventListener('click', fn_test5_1);//들어가는건 되지만 클릭은 안됨.제거했기때문에.
+		});
+		//onclick과 onsubmit에 앞에 reutrn을 적어주면 test함수의 반환값submit쪽으로 간다
+
+		
+	</script>
+	<!-- 중요한파트: 회원가입할때 사용 -->
+	<h2>기본 이벤트 제거1</h2>
+	<form>
+		<label>이름 : </label><input type="text" name="name" id="name"><br>
+		<label>아이디 : </label><input type="text" name="userId" id="userId"><br>
+		<label>비밀번호 : </label><input type="password" name="password" id="password"><br>
+		<label>비밀번호 확인 : </label><input type="password" name="passwordConfirm" id="passwordConfirm"><br>
+		<br>
+		<input type="submit" value="제출" onclick="return test7();"><!-- return을 해서  submit자체에 기능한테 넘겨준다, 일치하면 넘어가고 일치하지않으면 넘어가지않는다-->
+	</form>
+	<script>
+		function test7(){//호출을 하지않으면 알림창이 뜨지않음
+			//비밀번호가 서로 같지 않으면 제출이 되지 않게 막기
+			var password = document.getElementById('password').value;
+			var password2 = document.getElementById('passwordConfirm').value;
+			
+			if(password == password2){//제출이 가지고있는 이벤트가 강하다 submit
+				alert('비밀번호가 일치합니다.')
+				return true;
+			} else{
+				alert('비밀번호가 일치하지않습니다.')//온클릭 다시 리턴해야함
+				return false;
+			}
+		}
+	</script>
+	
+	<h2>기본 이벤트 제거2</h2>
+	<form onsubmit="return test8();">
+		<label>이름 : </label><input type="text" name="name" id="name2"><br>
+		<label>아이디 : </label><input type="text" name="userId" id="userId2"><br>
+		<label>비밀번호 : </label><input type="password" name="password" id="password2"><br>
+		<label>비밀번호 확인 : </label><input type="password" name="passwordConfirm" id="passwordConfirm2"><br>
+		<br>
+		<input type="submit" value="제출">
+	</form>
+	<script>
+		function test8(){//
+			var password = document.getElementById('password2').value;
+			var password2 = document.getElementById('passwordConfirm2').value;
+			
+			if(password == password2){//제출이 가지고있는 이벤트가 강하다 submit
+				alert('비밀번호가 일치합니다.')
+				return true;
+			} else{
+				alert('비밀번호가 일치하지않습니다.')//온클릭 다시 리턴해야함
+				return false;
+			}
+		}
+	</script>
+	
+</body>
+</html>

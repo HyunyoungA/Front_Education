@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form>
+		<fieldset>
+			<legend>회원가입</legend>
+			<label>아이디 : </label>
+			<input type="text" id="id" onkeyup='test1()'>
+			<span id="idSpan"></span><br><br>
+			<label>비밀번호 : </label>
+			<input type="password" id="pwd"><br><br>
+			<label>비밀번호 확인 : </label>
+			<input type="password" id="pwdCheck" onchange='test2()'>
+			<span id="pwdSpan"></span><br><br>
+			<label>이름 : </label>
+			<input type="text" id="name"><br><br>
+			<button id="login" onclick="check();">회원가입</button>
+		</fieldset>
+	</form>
+	<script>
+		var idTest = document.getElementById('login');
+		
+		//아이디 중복 확인하는 메소드
+		function test1(){
+			var idStr = document.getElementById('id').value;
+			
+			if(idStr === 'user01'){
+				var area = document.getElementById('idSpan');
+				area.style.color = 'red';
+				area.innerHTML= "이미 존재하는 아이디입니다."
+				
+			}else{
+				var area2 = document.getElementById('idSpan');
+				area2.style.color = 'green';
+				area2.innerHTML= "사용 가능한 아이디입니다."
+			}
+		}
+	
+		function test2(){
+			var pwdStr = document.getElementById('pwd').value;
+			var pwdCheck = document.getElementById('pwdCheck').value;
+			//비밀번호 일치확인
+			if(pwdStr === pwdCheck){
+				var area = document.getElementById('pwdSpan');
+				area.style.color = 'green';
+				area.innerHTML= "비밀번호가 일치합니다."
+			}else{
+				var area2 = document.getElementById('pwdSpan');
+				area2.style.color = 'red';
+				area2.innerHTML= "비밀번호가 일치하지 않습니다"
+				//pwdCheck.focus();
+			}
+		}
+			
+		function check(){
+			var loginCheck = document.getElementById('login').value;
+			var pwdStr = document.getElementById('pwd').value;
+			var pwdCheck = document.getElementById('pwdCheck').value;
+			var idStr = document.getElementById('id');
+			var idValue = idStr.value;
+			var name = document.getElementById('name').value;
+			
+			//한칸이라도 비어있으면 XXX를 입력해주세요. 설정
+			
+			if(name !== '' || name.legth !== 0 || name == true){
+				
+				if(idValue == '' || idValue.length == 0){
+					alert('아이디를 입력해주세요');
+					idStr.onblur= function(){
+						idStr.focus();
+					}return false;
+					
+				} else if(pwdStr == '' || pwdStr.length == 0){
+					alert('비밀번호를 입력해주세요');
+					document.getElementById('pwd').focus();
+				} else if(pwdCheck == '' || pwdCheck.length == 0){
+					alert('비밀번호확인을 입력해주세요');
+				} else if(name == '' || name.length == 0){
+					alert('이름을 입력해주세요');
+				} 
+				
+			} else{
+				alert(name + '님, 회원가입이 성공적으로 완료되었습니다^^');
+			}
+			
+			//문제 : 포커스 ,커서가 들어갔다가 다시 사라짐
+		}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	</script>
+</body>
+</html>

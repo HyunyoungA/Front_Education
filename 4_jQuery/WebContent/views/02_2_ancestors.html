@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<style>
+	.wrap *{
+		border: 1px solid lightgray;
+		display: block; padding:5px; margin: 15px;
+	}
+	.type{width: 500px;}
+
+</style>
+</head>
+<body>
+	<h1>객체 탐색</h1>
+	<hr><hr>
+	<h2>Ancestors메소드</h2>
+	<p>선택한 요소의 상위 요소들을 선택할 수 있는 메소드</p>
+	<div class="wrap">
+		<div class="type">div (great-grandparent)
+			<ul>ul (grandparent)
+				<li>li(direct parent)
+					<span>span</span>
+				</li>
+			</ul>
+		</div>
+		<div class="type">div (grandparent)
+			<p>p (direct parent)
+				<span>span</span>
+			</p>
+		</div>
+	</div>
+	<script>
+		$(function(){
+			console.log($('span').parent());//S.fn.init(2), p,a
+			$('span').parent().css({'color':'red', 'border':'2px solid red'});//span의 바로 상위태그에 적용하는 것이 .parent()
+			
+// 			$('span').parents().css({'color':'blue', 'border':'2px solid blue'});//span 위에 있는 모든 상위클래스들에 적용(body까지) .parents()
+			$('span').parents('ul').css({'color':'blue', 'border':'2px solid blue'});//span 위에 있는 모든 상위클래스 중에 ul과 일치하는 요소만에 리턴(요소지정가능) .parents('ul')
+			
+			$('span').parentsUntil('div').css('background','beige');//div를 포함하지않고 그 전까지 다 가져온다.
+		})
+	</script>
+</body>
+</html>

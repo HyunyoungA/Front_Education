@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;양현영_포트폴리오2.html&apos; to &apos;양현영_포트폴리오2.html&apos;&#x0D;&#x0A;- Original project: &apos;3_JavaScript&apos;&#x0D;&#x0A;- Destination element: &apos;양현영_포트폴리오2.html&apos;&#x0D;&#x0A;- Original element: &apos;양현영_포트폴리오2.html&apos;" description="Copy file" element1="WebContent/views/양현영_포트폴리오2.html" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1650805776704" target="/3_JavaScript/WebContent/views/양현영_포트폴리오2.html" units="0" version="1.0"/>
+</session>

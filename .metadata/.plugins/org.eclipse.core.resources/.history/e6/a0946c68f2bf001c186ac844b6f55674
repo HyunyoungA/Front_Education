@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.area{width: 70px}
+</style>
+</head>
+<body>
+	<h1>Practice2</h1>
+	<form id='form'>
+	<input type="number" id="blank1" class="area"><!-- 첫번째 빈칸 -->
+	<select id="selectBox"><!-- 연산자 + - * / % -->
+		<option value="+">+</option>
+		<option value="-">-</option>
+		<option value="*">*</option>
+		<option value="/">/</option>
+		<option value="%">%</option>
+	</select>
+	<input type="number" id="blank2" class="area"><!-- 두번째 빈칸 -->
+	<button  type="button" id="operation" value="=" onclick="Calculation()">=</button><!-- 값의 결과를 전달하는 버튼 -->
+	<input type="number" id="result1" class="area" readonly>
+	<!-- 값의 결과를 반환받는 빈칸 -->
+	</form>
+	<script>
+		function Calculation(){
+			var result1 = document.getElementById('result1');
+			var num1 = Number(document.getElementById('blank1').value);
+			var num2 = Number(document.getElementById('blank2').value);
+			var cal = document.getElementsByTagName('option');//***중요***getElementsByTagName()-->태그명의 연산자를 지정!!
+			var calC;
+			for(var i in cal){
+				if(cal[i].selected){
+					calC = cal[i].value;
+					break;
+				}
+			}
+			var result;
+			switch(calC){
+			case "+": result = num1 + num2; 
+					  break;
+			case "-": result = num1 - num2;
+					  break;
+			case "*": result = num1 * num2;
+					  break;
+			case "/": result = num1 / num2;
+					  break;
+			case "%": result = num1 % num2;
+					  break;
+			}	
+			if(result=='Infinity'|| result=='-Infinity' ||result =='NaN'){
+				result1.style.backgroundColor = 'red';
+				result1.style.color = 'white';
+				result1.value = "연산불가";
+			}else{
+				result1.style.backgroundColor = 'white';
+				result1.style.color = 'black';
+				result1.value = result;
+			}
+		
+		}
+	</script>
+	
+</body>
+</html>

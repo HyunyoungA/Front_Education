@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<style>
+	.wrap *{
+		border: 1px solid lightgray;
+		display: block; padding:5px; margin: 15px;
+	}
+	.type{width: 500px;}
+
+</style>
+</head>
+<body>
+	<h1>객체 탐색</h1>
+	<hr><hr>
+	<h2>Descendants메소드</h2>
+	<p>선택한 요소의 하위 요소들을 선택할 수 있는 메소드</p>
+	<div class="wrap">
+		<div class="type">div (great-grandparent)
+			<ul>ul (grandparent)
+				<li>li(direct parent)
+					<span>span1</span>
+				</li>
+				<li>li(direct parent)
+					<span>span2</span>
+				</li>
+			</ul>
+		</div>
+		<div class="type">div (grandparent)
+			<p>p (direct parent)
+				<span>span</span>
+			</p>
+		</div>
+	</div>
+	<script>
+		$(function(){
+			var style1 = {'color':'red','border':'2px solid red'};
+			var style2 = {'color':'blue','border':'2px solid blue'};
+			var style3 = {'color':'green','border':'2px solid green'};
+			var style4 = {'color':'pink','border':'2px solid pink'};
+			var style5 = {'color':'orange','border':'2px solid orange'};
+			
+			$('.wrap').children().css(style1);
+			//.children(): 하위요소 선택되서 나옴-->div선택됨
+			$('.wrap').children().children().css(style2);
+			//.children().children(): div의 하위태그인 ul태크,p태그가 선택된다
+			$('.wrap').children().children('ul').css(style3);
+			//.children().children(): div의 하위태그 중에 ul태크 지정선택가능
+			$('.wrap').find('span').css(style4);
+			//모든 후손을 find()을 통해 한 번에 지정할 수 있다.span에 체크하겠다.
+			
+			// span1과 span2만 주황색으로 바꾸기
+			$('.wrap').children().children('ul').find('span').css(style5);//방법1
+// 			$('.wrap').find('li').children('span').css(style5);방법2
+// 			$('.type').children().children().children().css(style5);방법3
+// 			$('li').children().css(style5);방법4
+			$('.wrap').children().children().children('li').children().css(style5);
+
+		})
+		
+	</script>
+</body>
+</html>
